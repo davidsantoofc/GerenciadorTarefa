@@ -7,6 +7,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Descrição</th>
+                <th>Concluida</th>
                 <th colspan="2" style="text-align:center">Ações</th>
             </tr>
         </thead>
@@ -16,7 +17,8 @@
                 <tr>
                     <td>{{$tarefa->nome}}</td>
                     <td>{{$tarefa->descricao}}</td>
-                    <td><a href="">Alterar</a></td>
+                    <td>{{$tarefa->concluida}}</td>
+                    <td><a href="editar-tarefa/{{$tarefa->id}}">Alterar</a></td>
                     <td><a href="">Excluir</a></td>
                 </tr>
             @endforeach
