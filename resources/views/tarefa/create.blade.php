@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             <label>Tarefa  concluída: </label>
-            <input type="checkbox"  name="concluida"  value="sim" />
+            <input type="checkbox"  name="concluida"  value="Sim" />
         </div>
         <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
     </form>

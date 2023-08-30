@@ -43,4 +43,22 @@
             return redirect('/listar-tarefas');
 
         }
+
+        public function edit($id){
+            $tarefa = Tarefa::find($id);
+            return view('tarefa.edit')->with('tarefa', $tarefa);
+        }
+
+        public function update(Request $request, $id){
+           // dd($request->all());
+            $data = [
+                'nome' => $request->nome,
+                'descricao' => $request->descricao,
+                'prazo' => $request->prazo,
+                'prioridade' => $request->prioridade,
+                'concluida' => ($request->concluida == Null) ? "Não" : $request->concluida,
+            ];
+            Tarefa::where('id', $id)->update($data);
+            return redirect('/listar-tarefas');
+        }
     }
