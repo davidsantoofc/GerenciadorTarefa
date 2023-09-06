@@ -16,7 +16,8 @@
         }
 
         public function show($id){
-            echo "<h1>Visualizar Tarefa $id.</h1>";
+            $tarefa = Tarefa::find($id);
+            return view('tarefa.show')->with('tarefa', $tarefa);
         }
 
         public function create(){
@@ -39,8 +40,8 @@
                 $tarefa->concluida = $request->concluida;
 
             $tarefa->save();
-
-            return redirect('/listar-tarefas');
+            $nome = $tarefa->nome;
+            return redirect('/listar-tarefas')->with('sucesso', "Tarefa ${nome} cadastrada com sucesso");
 
         }
 
@@ -51,6 +52,8 @@
 
         public function update(Request $request, $id){
            // dd($request->all());
+            $tarefa = Tarefa::find($id);
+            $nome = $tarefa->nome;
             $data = [
                 'nome' => $request->nome,
                 'descricao' => $request->descricao,
@@ -59,6 +62,13 @@
                 'concluida' => ($request->concluida == Null) ? "Não" : $request->concluida,
             ];
             Tarefa::where('id', $id)->update($data);
-            return redirect('/listar-tarefas');
+            return redirect('/listar-tarefas')->with('sucesso', "Tarefa ${nome} alterada com sucesso");
+        }
+
+        public function destroy($id){
+            $tarefa = Tarefa::find($id);
+            $nome = $tarefa->nome;
+            $tarefa->delete();
+            return redirect('listar-tarefas')->with('sucesso', "Tarefa ${nome} excluída com sucesso!");
         }
     }

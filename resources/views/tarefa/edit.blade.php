@@ -4,11 +4,11 @@
         @method('PUT')
         <div class="form-group">
             <label>Tarefa</label>
-            <input name="nome" class="from-control" value="{{$tarefa->nome}}" required />
+            <input name="nome" class="form-control" value="{{$tarefa->nome}}" required />
         </div>
         <div class="form-group">
             <label>Descricao</label>
-            <input name="descricao" class="from-control" value="{{$tarefa->descricao}}" required />
+            <input name="descricao" class="form-control" value="{{$tarefa->descricao}}" required />
         </div>
         <div class="form-group">
             <label>Prazo</label>
